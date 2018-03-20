@@ -902,12 +902,12 @@ ARM Macro Assembler    Page 14
               00000000 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
-erwork --depend=.\stepper_motor_1\startup_stm32f429xx.d -o.\stepper_motor_1\sta
-rtup_stm32f429xx.o -I.\RTE\_robotarm -Id:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSI
-S\Include -Id:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\
-ST\STM32F4xx\Include --predefine="__EVAL SETA 1" --predefine="__MICROLIB SETA 1
-" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ SETA 1" --predefi
-ne="STM32F429xx SETA 1" --list=startup_stm32f429xx.lst startup_stm32f429xx.s
+erwork --depend=.\robotarm\startup_stm32f429xx.d -o.\robotarm\startup_stm32f429
+xx.o -I.\RTE\_robotarm -Id:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -Id:
+\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\I
+nclude --predefine="__EVAL SETA 1" --predefine="__MICROLIB SETA 1" --predefine=
+"__UVISION_VERSION SETA 524" --predefine="_RTE_ SETA 1" --predefine="STM32F429x
+x SETA 1" --list=startup_stm32f429xx.lst startup_stm32f429xx.s
 
 
 

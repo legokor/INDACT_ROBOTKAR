@@ -48,7 +48,7 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\stepper_motor_1\</OutputDirectory>
+          <OutputDirectory>.\robotarm\</OutputDirectory>
           <OutputName>robotarm</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
