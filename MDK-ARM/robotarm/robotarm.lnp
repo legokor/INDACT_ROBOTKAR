@@ -14,6 +14,7 @@
 ".\robotarm\stm32f4xx_hal_dma_ex.o"
 ".\robotarm\stm32f4xx_hal_dma.o"
 ".\robotarm\stm32f4xx_hal_rcc.o"
+".\robotarm\stm32f4xx_hal_uart.o"
 ".\robotarm\stm32f4xx_it.o"
 ".\robotarm\main.o"
 ".\robotarm\stm32f4xx_hal_msp.o"

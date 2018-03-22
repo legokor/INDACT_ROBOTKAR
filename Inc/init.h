@@ -9,6 +9,7 @@
 #include "stm32f4xx.h"
 
 extern TIM_HandleTypeDef htim2;
+extern UART_HandleTypeDef huart1;
 extern volatile int dir_enableA;
 extern volatile int dir_enableB;
 extern volatile int dir_enableC;
@@ -32,5 +33,7 @@ void read_button_motorC(int*);
 
 void ledON(void);
 void ledOFF(void);
+
+void SendToPC(uint8_t* send, size_t length);
 
 #endif /* __INIT_H */

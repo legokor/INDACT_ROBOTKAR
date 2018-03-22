@@ -1,4 +1,9 @@
 .\robotarm\stm32f4xx_it.o: ../Src/stm32f4xx_it.c
+.\robotarm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
+.\robotarm\stm32f4xx_it.o: ../Inc/stm32f4xx_hal_conf.h
+.\robotarm\stm32f4xx_it.o: ../Inc/main.h
+.\robotarm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
+.\robotarm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
 .\robotarm\stm32f4xx_it.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 .\robotarm\stm32f4xx_it.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h
 .\robotarm\stm32f4xx_it.o: ../Drivers/CMSIS/Include/core_cm4.h
@@ -9,11 +14,6 @@
 .\robotarm\stm32f4xx_it.o: ../Drivers/CMSIS/Include/core_cmSimd.h
 .\robotarm\stm32f4xx_it.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
 .\robotarm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
-.\robotarm\stm32f4xx_it.o: ../Inc/stm32f4xx_hal_conf.h
-.\robotarm\stm32f4xx_it.o: ../Inc/main.h
-.\robotarm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
-.\robotarm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
-.\robotarm\stm32f4xx_it.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 .\robotarm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
 .\robotarm\stm32f4xx_it.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\robotarm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
@@ -29,5 +29,6 @@
 .\robotarm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 .\robotarm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 .\robotarm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+.\robotarm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 .\robotarm\stm32f4xx_it.o: ../Inc/stm32f4xx_it.h
 .\robotarm\stm32f4xx_it.o: ../Inc/init.h

@@ -44,6 +44,7 @@
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_TIM2_Init(void);                                    
+static void MX_USART1_UART_Init(void);   
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 
@@ -52,6 +53,8 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 /* Private variables ---------------------------------------------------------*/
 TIM_HandleTypeDef htim2;
+
+UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -66,7 +69,8 @@ TIM_HandleTypeDef htim2;
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);
+char send[20] = {0};
+
 
 /* USER CODE END 0 */
 
@@ -96,28 +100,32 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM2_Init();
+	MX_USART1_UART_Init();
 
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
   HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_2);
   HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_3);
+  HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_4);
 	init_motorA();
 	init_motorB();
 	init_motorC();
 	int semaphoreA = 1;
 	int semaphoreB = 1;
 	int semaphoreC = 1;
+	/* USER CODE END 2 */
 
-  /* USER CODE END 2 */
-
+	sprintf(send,"hello world");
+	
+	
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
+	  while (1)
   {
   /* USER CODE END WHILE */
 		read_button_motorA(&semaphoreA);
 		read_button_motorB(&semaphoreB);
-		read_button_motorC(&semaphoreC);
+		read_button_motorC(&semaphoreC);		
   }
 }
 
@@ -222,7 +230,8 @@ static void MX_TIM2_Init(void)
 		_Error_Handler(__FILE__, __LINE__);
   }
 	
-	if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_4) != HAL_OK)
+	/* Config TIM2 CHANNEL 3 */
+		if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_4) != HAL_OK)
   {
 		_Error_Handler(__FILE__, __LINE__);
   }
@@ -333,6 +342,27 @@ static void MX_GPIO_Init(void)
   HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 2);
   HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
 }
+
+/* USART1 init function */
+static void MX_USART1_UART_Init(void)
+{
+
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 115200;
+  huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+}
+
+
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
