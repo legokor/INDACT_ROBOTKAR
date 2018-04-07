@@ -45,14 +45,30 @@ void run_motorB(int DIR){
 void run_motorC(int DIR){
 	if(!setDirC)
 	{
-		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_12, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_13, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_14, DIR);
+		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_12, DIR);
+		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_13, GPIO_PIN_RESET); // enable
+		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_14, GPIO_PIN_RESET);
 		htim2.Init.Period = 5000;
 		HAL_TIM_PWM_Init(&htim2); 
 		setDirC = 1;
 	}
 	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
+}
+
+/* Run dc actuator */ 
+void run_actuator(int DIR)
+{
+	if(DIR)
+	{
+		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_0, GPIO_PIN_SET);		// H-bridge control signals
+		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_1, GPIO_PIN_RESET);
+	}
+	else
+	{
+		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_0, GPIO_PIN_RESET);	// H-bridge control signals
+		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_1, GPIO_PIN_SET);
+	}	
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
 }
 
 /* Stop motorA and reset the DIRection */
@@ -73,27 +89,35 @@ void stop_motorC(){
 	setDirC = 0;
 }
 
+/* Stop DC actuator */ 
+void stop_actuator(void)
+{
+	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_0, GPIO_PIN_RESET);	//OPEN H-BRIDGE -> no current
+	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_1, GPIO_PIN_RESET);
+	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
+}
+
 /* Init motorA and reset the DIRection */
 void init_motorA(void){
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_SET);		//DIR
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, GPIO_PIN_SET);	//ENABLE
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_RESET);//COM
 	setDirA = 0;
 }
 
 /* Init motorB and reset the DIRection */
 void init_motorB(void){
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);	//DIR
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET);	//ENABLE
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_RESET);//COM
 	setDirB = 0;
 }
 
 /* Init motorC and reset the DIRection */
 void init_motorC(void){
-	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_12, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_13, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_14, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_12, GPIO_PIN_SET);	//DIR
+	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_13, GPIO_PIN_SET);	//ENABLE
+	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_14, GPIO_PIN_RESET);//COM
 	setDirC = 0;
 }
 
@@ -163,6 +187,22 @@ void read_button_motorC(int* semaphoreC){
 		stop_motorC();
 		*semaphoreC = 1;
 	}	
+}
+
+/* Read buttons and run actuator to the desired direction */
+void read_button_actuator(void)
+{
+	if(HAL_GPIO_ReadPin(GPIOH, GPIO_PIN_0))
+	{
+		 run_actuator(GPIO_PIN_SET);
+	}
+	
+	else if(HAL_GPIO_ReadPin(GPIOH, GPIO_PIN_1))
+	{
+		 run_actuator(GPIO_PIN_RESET);
+	}
+	else
+		stop_actuator();
 }
 
 /* Switches the LED ON on the board. Use it for debug. */

@@ -8,6 +8,7 @@
 
 #include "stm32f4xx.h"
 
+extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim2;
 extern UART_HandleTypeDef huart1;
 extern volatile int dir_enableA;
@@ -18,10 +19,12 @@ extern volatile int dir_enableC;
 void run_motorA(int);
 void run_motorB(int);
 void run_motorC(int);
+void run_actuator(int);
 
 void stop_motorA(void);
 void stop_motorB(void);
 void stop_motorC(void);
+void stop_actuator(void);
 
 void init_motorA(void);
 void init_motorB(void);
@@ -30,6 +33,7 @@ void init_motorC(void);
 void read_button_motorA(int*);
 void read_button_motorB(int*);
 void read_button_motorC(int*);
+void read_button_actuator(void);
 
 void ledON(void);
 void ledOFF(void);
