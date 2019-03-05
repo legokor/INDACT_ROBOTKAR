@@ -10,3 +10,5 @@ limit switch x6 <br />
 push button x6 <br />
 quadrature encoder x1 - ... <br />
 Check pinout for wiring peripherials and STM32.
+
+Kábelek bekötését keresd a WIKI lapon
