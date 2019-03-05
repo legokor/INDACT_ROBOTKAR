@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 MOTORA:
+=======
+MOTOR1: vizsyinte (B)
+>>>>>>> 40d1340c39cf57ee7e07f33b2a5b9188a9cddcc2
 PC8 - DIR
 PC11 - ENABLE 
 PC12 - COM(0)
@@ -10,17 +14,29 @@ PG3 - LIMIT SWITCH2A /fekete - alsó/
 
 PA0 - USERBUTTON
 
+<<<<<<< HEAD
 MOTORB:	/oldalsó/
 PC13 - DIR	/fekete/
 PC14 - ENABLE	/fehér/
 PC15 - COM(0)	/fehér meletti barna/
 PB10 - STEP (TIM2_CH3)	/fekete melletti barna/
+=======
+MOTOR2: felso (C)
+PC13 - DIR
+PC14 - ENABLE 
+PC15 - COM(0)
+PB10 - STEP (TIM2_CH3)
+>>>>>>> 40d1340c39cf57ee7e07f33b2a5b9188a9cddcc2
 PF3 - BUTTON1
 PF4 - BUTTON2
 PG4 - LIMIT SWITCH1B	/barna/
 PG5 - LIMIT SWITCH2B	/szürke/
 
+<<<<<<< HEAD
 MOTORC:
+=======
+MOTOR3: zr20 (C)
+>>>>>>> 40d1340c39cf57ee7e07f33b2a5b9188a9cddcc2
 PF12 - DIR
 PF13 - ENABLE - default 0
 PF14 - COM(0) - GND
