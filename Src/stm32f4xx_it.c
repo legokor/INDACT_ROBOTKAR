@@ -98,10 +98,10 @@ void SysTick_Handler(void)
 * @brief This function handles EXTI line interrupt.
 */
 
-//void EXTI0_IRQHandler(void)
-//{
-//  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
-//}
+void EXTI0_IRQHandler(void)
+{
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
+}
 
 void EXTI2_IRQHandler(void)
 {
@@ -126,89 +126,91 @@ void EXTI9_5_IRQHandler(void)
 /* USER CODE BEGIN 1 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	switch(GPIO_Pin){
-		case GPIO_PIN_2:
-			if(HAL_GPIO_ReadPin(GPIOG, GPIO_Pin) == 1)
-			{
-				stop_motorA();
-				dir_enableA = DISABLE_LEFT;
-			}
-			else
-			{
-				init_motorA();
-				dir_enableA = ENABLE_BOTH;
-			}
-		break;
-		
-		case GPIO_PIN_3:
-			if(HAL_GPIO_ReadPin(GPIOG, GPIO_Pin) == 1)
-			{
-				stop_motorA();	
-				dir_enableA = DISABLE_RIGHT;
-			}
-			else
-			{
-				init_motorA();
-				dir_enableA = ENABLE_BOTH;
-			}
-		break;
-				
-		case GPIO_PIN_4:
-			if(HAL_GPIO_ReadPin(GPIOG, GPIO_Pin) == 1)
-			{
-				stop_motorB();	
-				dir_enableB = DISABLE_LEFT;
-			}
-			else
-			{
-				init_motorB();
-				dir_enableB = ENABLE_BOTH;
-			}
-		break;
-		
-		case GPIO_PIN_5:
-			if(HAL_GPIO_ReadPin(GPIOG, GPIO_Pin) == 1)
-			{
-				stop_motorB();	
-				dir_enableB = DISABLE_RIGHT;
-			}
-			else
-			{
-				init_motorB();
-				dir_enableB = ENABLE_BOTH;
-			}
-		break;
-		
-		case GPIO_PIN_6:
-			if(HAL_GPIO_ReadPin(GPIOG, GPIO_Pin) == 1)
-			{
-				stop_motorC();	
-				dir_enableC = DISABLE_LEFT;		
-			}
-			else
-			{
-				init_motorC();
-				dir_enableC = ENABLE_BOTH;
-			}
-		break;
-		
-		case GPIO_PIN_7:
-			if(HAL_GPIO_ReadPin(GPIOG, GPIO_Pin) == 1)
-			{
-				stop_motorC();	
-				dir_enableC = DISABLE_RIGHT;
-			}
-			else
-			{
-				init_motorC();
-				dir_enableC = ENABLE_BOTH;
-			}
-		break;
-		
-		
-		default:
-			break;
-		}
+//	switch(GPIO_Pin){
+//		case GPIO_PIN_2:
+//			if(HAL_GPIO_ReadPin(GPIOG, GPIO_Pin) == 1)
+//			{
+//				stop_motorA();
+//				dir_enableA = DISABLE_LEFT;
+//				ledON();
+//			}
+//			else
+//			{
+//				init_motorA();
+//				dir_enableA = ENABLE_BOTH;
+//				ledOFF();
+//			}
+//		break;
+//		
+//		case GPIO_PIN_3:
+//			if(HAL_GPIO_ReadPin(GPIOG, GPIO_Pin) == 1)
+//			{
+//				stop_motorA();	
+//				dir_enableA = DISABLE_RIGHT;
+//			}
+//			else
+//			{
+//				init_motorA();
+//				dir_enableA = ENABLE_BOTH;
+//			}
+//		break;
+//				
+//		case GPIO_PIN_4:
+//			if(HAL_GPIO_ReadPin(GPIOG, GPIO_Pin) == 1)
+//			{
+//				stop_motorB();	
+//				dir_enableB = DISABLE_LEFT;
+//			}
+//			else
+//			{
+//				init_motorB();
+//				dir_enableB = ENABLE_BOTH;
+//			}
+//		break;
+//		
+//		case GPIO_PIN_5:
+//			if(HAL_GPIO_ReadPin(GPIOG, GPIO_Pin) == 1)
+//			{
+//				stop_motorB();	
+//				dir_enableB = DISABLE_RIGHT;
+//			}
+//			else
+//			{
+//				init_motorB();
+//				dir_enableB = ENABLE_BOTH;
+//			}
+//		break;
+//		
+//		case GPIO_PIN_6:
+//			if(HAL_GPIO_ReadPin(GPIOG, GPIO_Pin) == 1)
+//			{
+//				stop_motorC();	
+//				dir_enableC = DISABLE_RIGHT;		
+//			}
+//			else
+//			{
+//				init_motorC();
+//				dir_enableC = ENABLE_BOTH;
+//			}
+//		break;
+//		
+//		case GPIO_PIN_7:
+//			if(HAL_GPIO_ReadPin(GPIOG, GPIO_Pin) == 1)
+//			{
+//				stop_motorC();	
+//				dir_enableC = DISABLE_LEFT;
+//			}
+//			else
+//			{
+//				init_motorC();
+//				dir_enableC = ENABLE_BOTH;
+//			}
+//		break;
+//		
+//		
+//		default:
+//			break;
+//		}
 }
 	
 /**

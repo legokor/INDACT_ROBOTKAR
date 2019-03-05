@@ -41,19 +41,20 @@
 #include "init.h"
 
 /* USER CODE BEGIN Includes */
-void SystemClock_Config(void);
-static void MX_GPIO_Init(void);
-static void MX_TIM1_Init(void); 
-static void MX_TIM2_Init(void);                                    
-static void MX_USART1_UART_Init(void);   
-void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
+void SystemClock_Config(void);	/* mxcube megcsinálta, innen késobb kiolvashatóak paraméterek, pl.: busz órajel */
+static void MX_GPIO_Init(void);	/* ki-, bemenetek inicializálása */ 
+static void MX_TIM1_Init(void); /* TIMER1 inicializálása */ 
+static void MX_TIM2_Init(void); /* TIMER2 inicializálása */                                   
+static void MX_USART1_UART_Init(void);   /* UART1 inicializáció */
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);	/* MCU Specific Paackage, MCU: mikrokontroller unit */
  
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
+
+/* struktúrák */
 TIM_HandleTypeDef htim1;
 TIM_HandleTypeDef htim2;
-
 UART_HandleTypeDef huart1;
 
 /* Private variables ---------------------------------------------------------*/
@@ -61,7 +62,7 @@ UART_HandleTypeDef huart1;
 /* Private function prototypes -----------------------------------------------*/
 
 /* Private function prototypes -----------------------------------------------*/
-char send[20] = {0};
+char send[20] = {0}; //uart teszt
 
 int main(void)
 {
@@ -81,9 +82,12 @@ int main(void)
 	MX_USART1_UART_Init();
 
   HAL_TIM_Base_Start_IT(&htim2);
+  HAL_TIM_Base_Start_IT(&htim1);
   HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_2);
   HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_3);
   HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_4);
+	HAL_TIM_PWM_Init(&htim1);
+  HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
 	
 	init_motorA();
 	init_motorB();
@@ -93,11 +97,11 @@ int main(void)
 	int semaphoreC = 1;
 
 	sprintf(send,"hello world");
-	
-	
+
   /* Infinite loop */
 	while (1)
   {
+		SendToPC((uint8_t*) send, sizeof(send));
 		read_button_motorA(&semaphoreA);
 		read_button_motorB(&semaphoreB);
 		read_button_motorC(&semaphoreC);		
@@ -292,7 +296,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOG_CLK_ENABLE();
   __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
-	__HAL_RCC_GPIOH_CLK_ENABLE();
+  __HAL_RCC_GPIOE_CLK_ENABLE();
 	
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8|GPIO_PIN_11|GPIO_PIN_12, GPIO_PIN_RESET);
@@ -344,12 +348,18 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 	
-	/*Configure GPIO pin : PF3 PF4 - BUTTONC */
+	/*Configure GPIO pin : PG0 PG1 - BUTTONC */
   GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);	
-		
+  HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);	
+
+	/*Configure GPIO pin : PG8 PG9 - BUTTON_ACTUATOR */
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);	
+	
 	/*Configure GPIO pin : PG2 PG4 PG6 - LIMIT SWITCH 1A1B1C  */
   GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_6;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
@@ -371,11 +381,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 	
-	/*Configure GPIO pin : PH0 PH1 - BUTTON_ACTUATOR */
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);	
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI0_IRQn, 0, 0);
@@ -410,9 +415,6 @@ static void MX_USART1_UART_Init(void)
 }
 
 
-/* USER CODE BEGIN 4 */
-
-/* USER CODE END 4 */
 
 /**
   * @brief  This function is executed in case of error occurrence.

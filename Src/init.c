@@ -13,10 +13,10 @@ int setDirC = 0;
 void run_motorA(int DIR){
 	if(!setDirA)
 	{
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, DIR);
-		htim2.Init.Period = 5000;
+		HAL_GPIO_WritePin(GPIOC, MOTOR_A_ENALBE_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOC, MOTOR_A_COM_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOC, MOTOR_A_DIR_PIN, DIR);
+		htim2.Init.Period = 10000;
 		HAL_TIM_PWM_Init(&htim2); 
 		setDirA = 1;
 	}
@@ -25,14 +25,14 @@ void run_motorA(int DIR){
 
 /* Init motorB with the given DIRection
  * and runs the motor. If DIR is already set, 
- * then just run */
+ * then just run  -  SIDEWAYS*/
 void run_motorB(int DIR){
 	if(!setDirB)
 	{
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, DIR);
-		htim2.Init.Period = 5000;
+		HAL_GPIO_WritePin(GPIOC, MOTOR_B_ENALBE_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOC, MOTOR_B_COM_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOC, MOTOR_B_DIR_PIN, DIR);
+		htim2.Init.Period = 3000;
 		HAL_TIM_PWM_Init(&htim2); 
 		setDirB = 1;
 	}
@@ -45,10 +45,10 @@ void run_motorB(int DIR){
 void run_motorC(int DIR){
 	if(!setDirC)
 	{
-		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_12, DIR);
-		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_13, GPIO_PIN_RESET); // enable
-		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_14, GPIO_PIN_RESET);
-		htim2.Init.Period = 5000;
+		HAL_GPIO_WritePin(GPIOF, MOTOR_C_DIR_PIN, DIR);
+		HAL_GPIO_WritePin(GPIOF, MOTOR_C_ENALBE_PIN, GPIO_PIN_RESET); // enable
+		HAL_GPIO_WritePin(GPIOF, MOTOR_C_COM_PIN, GPIO_PIN_RESET);
+		htim2.Init.Period = 3000;
 		HAL_TIM_PWM_Init(&htim2); 
 		setDirC = 1;
 	}
@@ -99,25 +99,25 @@ void stop_actuator(void)
 
 /* Init motorA and reset the DIRection */
 void init_motorA(void){
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_SET);		//DIR
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, GPIO_PIN_SET);	//ENABLE
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_RESET);//COM
+	HAL_GPIO_WritePin(GPIOC, MOTOR_A_DIR_PIN, GPIO_PIN_SET);		//DIR
+	HAL_GPIO_WritePin(GPIOC, MOTOR_A_ENALBE_PIN, GPIO_PIN_SET);	//ENABLE
+	HAL_GPIO_WritePin(GPIOC, MOTOR_A_COM_PIN, GPIO_PIN_RESET);  //COM
 	setDirA = 0;
 }
 
 /* Init motorB and reset the DIRection */
 void init_motorB(void){
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);	//DIR
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET);	//ENABLE
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_RESET);//COM
+	HAL_GPIO_WritePin(GPIOC, MOTOR_B_DIR_PIN, GPIO_PIN_SET);		//DIR
+	HAL_GPIO_WritePin(GPIOC, MOTOR_B_ENALBE_PIN, GPIO_PIN_SET);	//ENABLE
+	HAL_GPIO_WritePin(GPIOC, MOTOR_B_COM_PIN, GPIO_PIN_RESET);	//COM
 	setDirB = 0;
 }
 
 /* Init motorC and reset the DIRection */
 void init_motorC(void){
-	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_12, GPIO_PIN_SET);	//DIR
-	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_13, GPIO_PIN_SET);	//ENABLE
-	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_14, GPIO_PIN_RESET);//COM
+	HAL_GPIO_WritePin(GPIOF, MOTOR_C_DIR_PIN, GPIO_PIN_SET);		//DIR
+	HAL_GPIO_WritePin(GPIOF, MOTOR_C_ENALBE_PIN, GPIO_PIN_RESET);	//ENABLE
+	HAL_GPIO_WritePin(GPIOF, MOTOR_C_COM_PIN, GPIO_PIN_RESET);	//COM
 	setDirC = 0;
 }
 
@@ -127,17 +127,17 @@ void init_motorC(void){
  * stop motor if;
  * 			- any of the previous is FALSE */
 void read_button_motorA(int* semaphoreA){
-	if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_13) && (*semaphoreA == 1) && (dir_enableA != DISABLE_BOTH) && (dir_enableA != DISABLE_RIGHT))
+	if(HAL_GPIO_ReadPin(GPIOA, MOTOR_A_BUTTON_RIGHT) && (*semaphoreA == 1) && (dir_enableA != DISABLE_BOTH) && (dir_enableA != DISABLE_RIGHT))
 	{
-		run_motorA(GPIO_PIN_RESET);
+		run_motorA(MOVE_RIGHT);
 		*semaphoreA = 0;
 	}
-	if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_14) && (*semaphoreA == 1) && (dir_enableA != DISABLE_BOTH) && (dir_enableA != DISABLE_LEFT))
+	if(HAL_GPIO_ReadPin(GPIOA, MOTOR_A_BUTTON_LEFT) && (*semaphoreA == 1) && (dir_enableA != DISABLE_BOTH) && (dir_enableA != DISABLE_LEFT))
 	{
-		run_motorA(GPIO_PIN_SET);
+		run_motorA(MOVE_LEFT);
 		*semaphoreA = 0;
 	}
-	else if (!HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_13) && !HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_14)) 
+	else if (!HAL_GPIO_ReadPin(GPIOA, MOTOR_A_BUTTON_RIGHT) && !HAL_GPIO_ReadPin(GPIOA, MOTOR_A_BUTTON_LEFT)) 
 	{
 		stop_motorA();
 		*semaphoreA = 1;
@@ -150,17 +150,17 @@ void read_button_motorA(int* semaphoreA){
  * stop motor if;
  * 			- any of the previous is FALSE */
 void read_button_motorB(int* semaphoreB){
-	if(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_3) && (*semaphoreB == 1) && (dir_enableB != DISABLE_BOTH) && (dir_enableB != DISABLE_RIGHT))
+	if(HAL_GPIO_ReadPin(GPIOF, MOTOR_B_BUTTON_RIGHT) && (*semaphoreB == 1) && (dir_enableB != DISABLE_BOTH) && (dir_enableB != DISABLE_RIGHT))
 	{
-		run_motorB(GPIO_PIN_RESET);
+		run_motorB(MOVE_RIGHT);
 		*semaphoreB = 0;
 	}
-	if(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_4) && (*semaphoreB == 1) && (dir_enableB != DISABLE_BOTH) && (dir_enableB != DISABLE_LEFT))
+	if(HAL_GPIO_ReadPin(GPIOF, MOTOR_B_BUTTON_LEFT) && (*semaphoreB == 1) && (dir_enableB != DISABLE_BOTH) && (dir_enableB != DISABLE_LEFT))
 	{
-		run_motorB(GPIO_PIN_SET);
+		run_motorB(MOVE_LEFT);
 		*semaphoreB = 0;
 	}
-	else if (!HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_3) && !HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_4)) 
+	else if (!HAL_GPIO_ReadPin(GPIOF, MOTOR_B_BUTTON_RIGHT) && !HAL_GPIO_ReadPin(GPIOF, MOTOR_B_BUTTON_LEFT)) 
 	{
 		stop_motorB();
 		*semaphoreB = 1;
@@ -172,17 +172,17 @@ void read_button_motorB(int* semaphoreB){
  * stop motor if;
  * 			- any of the previous is FALSE */
 void read_button_motorC(int* semaphoreC){
-	if(HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_0) && (*semaphoreC == 1) && (dir_enableC != DISABLE_BOTH) && (dir_enableC != DISABLE_RIGHT))
+	if(HAL_GPIO_ReadPin(GPIOG, MOTOR_C_BUTTON_RIGHT) && (*semaphoreC == 1) && (dir_enableC != DISABLE_BOTH) && (dir_enableC != DISABLE_RIGHT))
 	{
-		run_motorC(GPIO_PIN_RESET);
+		run_motorC(MOVE_RIGHT);
 		*semaphoreC = 0;
 	}
-	if(HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_1) && (*semaphoreC == 1) && (dir_enableC != DISABLE_BOTH) && (dir_enableC != DISABLE_RIGHT))
+	if(HAL_GPIO_ReadPin(GPIOG, MOTOR_C_BUTTON_LEFT) && (*semaphoreC == 1) && (dir_enableC != DISABLE_BOTH) && (dir_enableC != DISABLE_LEFT))
 	{
-		run_motorC(GPIO_PIN_SET);
+		run_motorC(MOVE_LEFT);
 		*semaphoreC = 0;
 	}
-	else if (!HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_0) && !HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_1)) 
+	else if (!HAL_GPIO_ReadPin(GPIOG, MOTOR_C_BUTTON_RIGHT) && !HAL_GPIO_ReadPin(GPIOG, MOTOR_C_BUTTON_LEFT)) 
 	{
 		stop_motorC();
 		*semaphoreC = 1;
@@ -192,17 +192,19 @@ void read_button_motorC(int* semaphoreC){
 /* Read buttons and run actuator to the desired direction */
 void read_button_actuator(void)
 {
-	if(HAL_GPIO_ReadPin(GPIOH, GPIO_PIN_0))
+	if(HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_8))
 	{
-		 run_actuator(GPIO_PIN_SET);
+		run_actuator(MOVE_RIGHT);
 	}
 	
-	else if(HAL_GPIO_ReadPin(GPIOH, GPIO_PIN_1))
+	else if(HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_9))
 	{
-		 run_actuator(GPIO_PIN_RESET);
+		run_actuator(MOVE_LEFT);
 	}
 	else
+	{	
 		stop_actuator();
+	}
 }
 
 /* Switches the LED ON on the board. Use it for debug. */
