@@ -24,7 +24,7 @@ PB10 - STEP (TIM2_CH3)	/fekete melletti barna/
 MOTOR2: felso (C)
 PC13 - DIR
 PC14 - ENABLE 
-PC15 - COM(0)
+ PC15 - COM(0)
 PB10 - STEP (TIM2_CH3)
 >>>>>>> 40d1340c39cf57ee7e07f33b2a5b9188a9cddcc2
 PF3 - BUTTON1

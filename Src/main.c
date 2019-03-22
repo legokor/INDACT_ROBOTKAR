@@ -97,6 +97,8 @@ int main(void)
 	int semaphoreC = 1;
 
 	sprintf(send,"hello world");
+	
+	//run_motorC(MOVE_RIGHT);
 
   /* Infinite loop */
 	while (1)
