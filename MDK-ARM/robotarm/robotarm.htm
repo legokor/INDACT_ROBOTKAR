@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\robotarm\robotarm.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\robotarm\robotarm.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Mar 22 19:08:23 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Mar 30 12:05:14 2019
 <BR><P>
 <H3>Maximum Stack Usage =        184 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -938,7 +938,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[64]"></a>main</STRONG> (Thumb, 186 bytes, Stack size 16 bytes, main.o(i.main))
+<P><STRONG><a name="[64]"></a>main</STRONG> (Thumb, 168 bytes, Stack size 16 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
@@ -962,7 +962,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[b0]"></a>read_button_actuator</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, init.o(i.read_button_actuator))
+<P><STRONG><a name="[b0]"></a>read_button_actuator</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, motor_functions.o(i.read_button_actuator))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = read_button_actuator &rArr; stop_actuator &rArr; HAL_TIM_PWM_Stop &rArr; TIM_CCxChannelCmd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
@@ -972,7 +972,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ad]"></a>read_button_motorA</STRONG> (Thumb, 130 bytes, Stack size 32 bytes, init.o(i.read_button_motorA))
+<P><STRONG><a name="[ad]"></a>read_button_motorA</STRONG> (Thumb, 130 bytes, Stack size 32 bytes, motor_functions.o(i.read_button_motorA))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = read_button_motorA &rArr; run_motorA &rArr; HAL_TIM_PWM_Init &rArr; TIM_Base_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
@@ -982,7 +982,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ae]"></a>read_button_motorB</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, init.o(i.read_button_motorB))
+<P><STRONG><a name="[ae]"></a>read_button_motorB</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, motor_functions.o(i.read_button_motorB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = read_button_motorB &rArr; run_motorB &rArr; HAL_TIM_PWM_Init &rArr; TIM_Base_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
@@ -992,7 +992,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[af]"></a>read_button_motorC</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, init.o(i.read_button_motorC))
+<P><STRONG><a name="[af]"></a>read_button_motorC</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, motor_functions.o(i.read_button_motorC))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = read_button_motorC &rArr; run_motorC &rArr; HAL_TIM_PWM_Init &rArr; TIM_Base_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
@@ -1002,7 +1002,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b2]"></a>run_actuator</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, init.o(i.run_actuator))
+<P><STRONG><a name="[b2]"></a>run_actuator</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, motor_functions.o(i.run_actuator))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = run_actuator &rArr; HAL_TIM_PWM_Start &rArr; TIM_CCxChannelCmd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -1011,7 +1011,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_button_actuator
 </UL>
 
-<P><STRONG><a name="[b4]"></a>run_motorA</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, init.o(i.run_motorA))
+<P><STRONG><a name="[b4]"></a>run_motorA</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, motor_functions.o(i.run_motorA))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = run_motorA &rArr; HAL_TIM_PWM_Init &rArr; TIM_Base_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -1021,7 +1021,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_button_motorA
 </UL>
 
-<P><STRONG><a name="[b6]"></a>run_motorB</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, init.o(i.run_motorB))
+<P><STRONG><a name="[b6]"></a>run_motorB</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, motor_functions.o(i.run_motorB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = run_motorB &rArr; HAL_TIM_PWM_Init &rArr; TIM_Base_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -1031,7 +1031,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_button_motorB
 </UL>
 
-<P><STRONG><a name="[b8]"></a>run_motorC</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, init.o(i.run_motorC))
+<P><STRONG><a name="[b8]"></a>run_motorC</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, motor_functions.o(i.run_motorC))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = run_motorC &rArr; HAL_TIM_PWM_Init &rArr; TIM_Base_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -1041,7 +1041,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_button_motorC
 </UL>
 
-<P><STRONG><a name="[b3]"></a>stop_actuator</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, init.o(i.stop_actuator))
+<P><STRONG><a name="[b3]"></a>stop_actuator</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, motor_functions.o(i.stop_actuator))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = stop_actuator &rArr; HAL_TIM_PWM_Stop &rArr; TIM_CCxChannelCmd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -1050,7 +1050,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_button_actuator
 </UL>
 
-<P><STRONG><a name="[b5]"></a>stop_motorA</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, init.o(i.stop_motorA))
+<P><STRONG><a name="[b5]"></a>stop_motorA</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, motor_functions.o(i.stop_motorA))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = stop_motorA &rArr; HAL_TIM_PWM_Stop &rArr; TIM_CCxChannelCmd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Stop
@@ -1058,7 +1058,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_button_motorA
 </UL>
 
-<P><STRONG><a name="[b7]"></a>stop_motorB</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, init.o(i.stop_motorB))
+<P><STRONG><a name="[b7]"></a>stop_motorB</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, motor_functions.o(i.stop_motorB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = stop_motorB &rArr; HAL_TIM_PWM_Stop &rArr; TIM_CCxChannelCmd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Stop
@@ -1066,7 +1066,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_button_motorB
 </UL>
 
-<P><STRONG><a name="[b9]"></a>stop_motorC</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, init.o(i.stop_motorC))
+<P><STRONG><a name="[b9]"></a>stop_motorC</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, motor_functions.o(i.stop_motorC))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = stop_motorC &rArr; HAL_TIM_PWM_Stop &rArr; TIM_CCxChannelCmd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Stop

@@ -32,3 +32,5 @@
 .\robotarm\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 .\robotarm\stm32f4xx_it.o: ../Inc/stm32f4xx_it.h
 .\robotarm\stm32f4xx_it.o: ../Inc/init.h
+.\robotarm\stm32f4xx_it.o: ../Inc/motor_functions.h
+.\robotarm\stm32f4xx_it.o: ../Inc/init.h

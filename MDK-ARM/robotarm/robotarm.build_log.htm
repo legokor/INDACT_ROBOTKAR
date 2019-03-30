@@ -22,15 +22,23 @@ Dialog DLL:      TCM.DLL V1.35.1.0
  
 <h2>Project:</h2>
 D:\antal\Documents\STM32\robotarm\MDK-ARM\robotarm.uvprojx
-Project File Date:  03/22/2019
+Project File Date:  03/30/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'd:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'robotarm'
-compiling main.c...
+compiling init.c...
+compiling motor_functions.c...
+..\Src\motor_functions.c(30): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, MOTOR_A_DIR_PIN, DIR);
+..\Src\motor_functions.c(46): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOC, MOTOR_B_DIR_PIN, DIR);
+..\Src\motor_functions.c(60): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOF, MOTOR_C_DIR_PIN, DIR);
+..\Src\motor_functions.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=7948 RO-data=484 RW-data=32 ZI-data=1232  
-".\robotarm\robotarm.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=7940 RO-data=484 RW-data=32 ZI-data=1232  
+".\robotarm\robotarm.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -53,7 +61,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.1.1
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

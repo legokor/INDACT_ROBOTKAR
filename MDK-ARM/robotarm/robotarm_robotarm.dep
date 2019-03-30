@@ -497,8 +497,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5AB1852E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5AB1852E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5A7AFE9D)
 I (../Inc/stm32f4xx_it.h)(0x5AB1852E)
-I (../Inc/init.h)(0x5AD7210C)
-F (../Src/main.c)(0x5C952494)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include --C99-I.\RTE\_robotarm-Id:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-Id:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429xx --C99-o .\robotarm\main.o --omf_browse .\robotarm\main.crf --depend .\robotarm\main.d)
+I (../Inc/init.h)(0x5C9F4321)
+I (../Inc/motor_functions.h)(0x5C9F4D32)
+F (../Src/main.c)(0x5C9F45E4)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include --C99-I.\RTE\_robotarm-Id:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-Id:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429xx --C99-o .\robotarm\main.o --omf_browse .\robotarm\main.crf --depend .\robotarm\main.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5AB1852E)
 I (../Inc/stm32f4xx_hal_conf.h)(0x5AB2D681)
 I (../Inc/main.h)(0x5AB1852E)
@@ -529,7 +530,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x5AB1852E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5AB1852E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5AB1852E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5A7AFE9D)
-I (../Inc/init.h)(0x5AD7210C)
+I (../Inc/motor_functions.h)(0x5C9F4D32)
+I (../Inc/init.h)(0x5C9F4321)
 F (../Src/stm32f4xx_hal_msp.c)(0x5AC91EC4)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include --C99-I.\RTE\_robotarm-Id:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-Id:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429xx --C99-o .\robotarm\stm32f4xx_hal_msp.o --omf_browse .\robotarm\stm32f4xx_hal_msp.crf --depend .\robotarm\stm32f4xx_hal_msp.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5AB1852E)
 I (../Inc/stm32f4xx_hal_conf.h)(0x5AB2D681)
@@ -561,8 +563,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x5AB1852E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5AB1852E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5AB1852E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5A7AFE9D)
-F (..\Src\init.c)(0x5C952114)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include --C99-I.\RTE\_robotarm-Id:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-Id:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429xx --C99-o .\robotarm\init.o --omf_browse .\robotarm\init.crf --depend .\robotarm\init.d)
-I (../Inc/init.h)(0x5AD7210C)
+F (..\Src\init.c)(0x5C9F4D65)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include --C99-I.\RTE\_robotarm-Id:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-Id:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429xx --C99-o .\robotarm\init.o --omf_browse .\robotarm\init.crf --depend .\robotarm\init.d)
+I (../Inc/init.h)(0x5C9F4321)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x5AB1852E)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h)(0x5AB1852E)
 I (../Drivers/CMSIS/Include/core_cm4.h)(0x5AB1852E)
@@ -593,6 +595,40 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x5AB1852E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5AB1852E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5AB1852E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5A7AFE9D)
+I (../Inc/motor_functions.h)(0x5C9F4D32)
+F (..\Src\motor_functions.c)(0x5C9F4D65)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include --C99-I.\RTE\_robotarm-Id:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-Id:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429xx --C99-o .\robotarm\motor_functions.o --omf_browse .\robotarm\motor_functions.crf --depend .\robotarm\motor_functions.d)
+I (../Inc/motor_functions.h)(0x5C9F4D32)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x5AB1852E)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h)(0x5AB1852E)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x5AB1852E)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F218E)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5AB1852E)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5AB1852E)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5AB1852E)
+I (../Drivers/CMSIS/Include/core_cmSimd.h)(0x5AB1852E)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5AB1852E)
+I (../Inc/stm32f4xx_hal_conf.h)(0x5AB2D681)
+I (../Inc/main.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x5AB1852E)
+I (d:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F218C)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5AB1852E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5A7AFE9D)
+I (../Inc/init.h)(0x5C9F4321)
 F (../Src/system_stm32f4xx.c)(0x5AB1852F)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include --C99-I.\RTE\_robotarm-Id:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-Id:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429xx --C99-o .\robotarm\system_stm32f4xx.o --omf_browse .\robotarm\system_stm32f4xx.crf --depend .\robotarm\system_stm32f4xx.d)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x5AB1852E)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h)(0x5AB1852E)

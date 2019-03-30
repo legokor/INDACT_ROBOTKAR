@@ -19,6 +19,7 @@
 ".\robotarm\main.o"
 ".\robotarm\stm32f4xx_hal_msp.o"
 ".\robotarm\init.o"
+".\robotarm\motor_functions.o"
 ".\robotarm\system_stm32f4xx.o"
 --library_type=microlib --strict --scatter ".\robotarm\robotarm.sct"
 --diag_suppress=L6329 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
