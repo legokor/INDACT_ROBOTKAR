@@ -9,28 +9,28 @@ PC12 - COM(0)
 PB3 - STEP (TIM2_CH2)
 PA13 - BUTTON1
 PA14 - BUTTON2
-PG2 - LIMIT SWITCH1A /lila - felsõ/
-PG3 - LIMIT SWITCH2A /fekete - alsó/
+PG2 - LIMIT SWITCH1A /lila - felsÃµ/
+PG3 - LIMIT SWITCH2A /fekete - alsÃ³/
 
 PA0 - USERBUTTON
 
 <<<<<<< HEAD
-MOTORB:	/oldalsó/
+MOTORB:	/oldalsÃ³/
 PC13 - DIR	/fekete/
-PC14 - ENABLE	/fehér/
-PC15 - COM(0)	/fehér meletti barna/
+PC14 - ENABLE	/fehÃ©r/
+PC15 - COM(0)	/fehÃ©r meletti barna/
 PB10 - STEP (TIM2_CH3)	/fekete melletti barna/
 =======
 MOTOR2: felso (C)
-PC13 - DIR
-PC14 - ENABLE 
- PC15 - COM(0)
-PB10 - STEP (TIM2_CH3)
+PC13 - DIR (fehÃ©r)
+PC14 - ENABLE (fehÃ©r melletti barna)
+ PC15 - COM(0) (fekete)
+PB10 - STEP (TIM2_CH3) (fekete melletti barna)
 >>>>>>> 40d1340c39cf57ee7e07f33b2a5b9188a9cddcc2
 PF3 - BUTTON1
 PF4 - BUTTON2
 PG4 - LIMIT SWITCH1B	/barna/
-PG5 - LIMIT SWITCH2B	/szürke/
+PG5 - LIMIT SWITCH2B	/szÃ¼rke/
 
 <<<<<<< HEAD
 MOTORC:
@@ -44,7 +44,7 @@ PB11 - STEP (TIM2_CH4)
 PG0 - BUTTON1
 PG1 - BUTTON2
 PG6 - LIMIT SWITCH1C	/piros/
-PG7 - LIMIT SWITCH2C	/fehér/
+PG7 - LIMIT SWITCH2C	/fehÃ©r/
 
 ACTUATOR
 PD0 - IN1
@@ -54,7 +54,7 @@ PG8 - BUTTON1
 PG9 - BUTTON2
 
 
-PH nem mûködik
+PH nem mÃ»kÃ¶dik
 
 
 UART
