@@ -14,12 +14,6 @@ C_DEPS += \
 
 
 # Each subdirectory must supply rules for building sources it contributes
-Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/%.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/%.c
-	@echo 'Building file: $<'
-	@echo 'Invoking: MCU GCC Compiler'
-	@echo $(PWD)
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F429xx -I"D:/antal/Documents/STM32/stm32_test_npc/teszt_os/Inc" -I"D:/antal/Documents/STM32/stm32_test_npc/teszt_os/Drivers/STM32F4xx_HAL_Driver/Inc" -I"D:/antal/Documents/STM32/stm32_test_npc/teszt_os/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"D:/antal/Documents/STM32/stm32_test_npc/teszt_os/Middlewares/Third_Party/FreeRTOS/Source/include" -I"D:/antal/Documents/STM32/stm32_test_npc/teszt_os/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"D:/antal/Documents/STM32/stm32_test_npc/teszt_os/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F" -I"D:/antal/Documents/STM32/stm32_test_npc/teszt_os/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/antal/Documents/STM32/stm32_test_npc/teszt_os/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
-	@echo 'Finished building: $<'
-	@echo ' '
-
+Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 '-D__weak=__attribute__((weak))' '-D__packed=__attribute__((__packed__))' -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -Og -ffunction-sections -Wall -fstack-usage -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 

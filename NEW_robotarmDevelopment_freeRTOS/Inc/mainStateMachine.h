@@ -12,6 +12,16 @@
 #include "cmsis_os.h"
 #include "main.h"
 #include "utilityFunctions.h"
+#include "motors.h"
+#include "encoder.h"
+#include <stdio.h>
+
+/* global variables */
+/* this variable sums up the 3 positions in one RCR cycle
+ * if it goes down to zero, that means the RCR has "reached zero"
+ * (RCR amount of IT's have been generated */
+volatile uint16_t RCRRemainingValue;
+volatile uint16_t testRCRRemainingValue;
 
 
 /* main state machine structure declaration */
@@ -24,6 +34,23 @@ typedef enum{
 	MSM_STATE_ERROR = (uint8_t)50u
 } FSM_mainStateMachine;
 
+/* homing state machine */
+typedef enum{
+	HSM_STATE_RESETHOMEDBITS = (uint8_t)0u,
+	HSM_STATE_MOTORPH_NEG = (uint8_t)5u,
+	HSM_STATE_MOTORS_HOMED = (uint8_t)240u
+} HSM_HomingStateMachine;
+/*
+2021.02.22. Király István, error messages
+*/
+typedef enum{
+
+	GENERAL = (uint8_t) 0,
+	NOT_HOMED = (uint8_t) 1u,
+	NOT_BOTH_DIR_ALLOWED = (uint8_t) 2u,
+	NOT_STOPPED = (uint8_t) 3u,
+	NOT_RUNNING = (uint8_t) 4u
+}Error_states;
 struct MSM_state;
 
 /* MSM function type definition */

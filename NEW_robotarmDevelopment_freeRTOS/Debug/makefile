@@ -19,6 +19,9 @@ RM := rm -rf
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
+ifneq ($(strip $(S_DEPS)),)
+-include $(S_DEPS)
+endif
 ifneq ($(strip $(S_UPPER_DEPS)),)
 -include $(S_UPPER_DEPS)
 endif
@@ -29,32 +32,67 @@ endif
 
 -include ../makefile.defs
 
+BUILD_ARTIFACT_NAME := teszt_os
+BUILD_ARTIFACT_EXTENSION := elf
+BUILD_ARTIFACT_PREFIX := 
+BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME).$(BUILD_ARTIFACT_EXTENSION)
+
 # Add inputs and outputs from these tool invocations to the build variables 
+EXECUTABLES += \
+teszt_os.elf \
+
+SIZE_OUTPUT += \
+default.size.stdout \
+
+OBJDUMP_LIST += \
+teszt_os.list \
+
+OBJCOPY_HEX += \
+teszt_os.hex \
+
 
 # All Target
-all: teszt_os.elf
+all: main-build
+
+# Main-build Target
+main-build: teszt_os.elf secondary-outputs
 
 # Tool invocations
 teszt_os.elf: $(OBJS) $(USER_OBJS) ../STM32F429ZITx_FLASH.ld
-	@echo 'Building target: $@'
-	@echo 'Invoking: MCU GCC Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F429ZITx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "teszt_os.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
+	arm-none-eabi-gcc -o "teszt_os.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"../STM32F429ZITx_FLASH.ld" --specs=nosys.specs -Wl,-Map="teszt_os.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
-	$(MAKE) --no-print-directory post-build
+
+default.size.stdout: $(EXECUTABLES)
+	arm-none-eabi-size  $(EXECUTABLES)
+	@echo 'Finished building: $@'
+	@echo ' '
+
+teszt_os.list: $(EXECUTABLES)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "teszt_os.list"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+teszt_os.hex: $(EXECUTABLES)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "teszt_os.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) *
 	-@echo ' '
 
-post-build:
-	-@echo 'Generating hex and Printing size information:'
-	arm-none-eabi-objcopy -O ihex "teszt_os.elf" "teszt_os.hex"
-	arm-none-eabi-size "teszt_os.elf"
-	-@echo ' '
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
 
-.PHONY: all clean dependents
-.SECONDARY: post-build
+fail-specified-linker-script-missing:
+	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'
+	@exit 2
+
+warn-no-linker-script-specified:
+	@echo 'Warning: No linker script specified. Check the linker settings in the build configuration.'
+
+.PHONY: all clean dependents fail-specified-linker-script-missing warn-no-linker-script-specified
+.SECONDARY:
 
 -include ../makefile.targets
