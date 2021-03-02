@@ -4,9 +4,11 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Src/encoder.c \
 ../Src/freertos.c \
 ../Src/main.c \
 ../Src/mainStateMachine.c \
+../Src/motors.c \
 ../Src/stm32f4xx_hal_msp.c \
 ../Src/stm32f4xx_hal_timebase_tim.c \
 ../Src/stm32f4xx_it.c \
@@ -15,9 +17,11 @@ C_SRCS += \
 ../Src/utilityFunctions.c 
 
 OBJS += \
+./Src/encoder.o \
 ./Src/freertos.o \
 ./Src/main.o \
 ./Src/mainStateMachine.o \
+./Src/motors.o \
 ./Src/stm32f4xx_hal_msp.o \
 ./Src/stm32f4xx_hal_timebase_tim.o \
 ./Src/stm32f4xx_it.o \
@@ -26,9 +30,11 @@ OBJS += \
 ./Src/utilityFunctions.o 
 
 C_DEPS += \
+./Src/encoder.d \
 ./Src/freertos.d \
 ./Src/main.d \
 ./Src/mainStateMachine.d \
+./Src/motors.d \
 ./Src/stm32f4xx_hal_msp.d \
 ./Src/stm32f4xx_hal_timebase_tim.d \
 ./Src/stm32f4xx_it.d \
